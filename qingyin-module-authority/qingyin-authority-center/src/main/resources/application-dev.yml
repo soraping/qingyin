@@ -1,0 +1,24 @@
+server:
+  port: 8077
+
+spring:
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        username: nacos
+        password: nacos
+        server-addr: 192.168.1.5:8848
+        namespace: qingyin
+
+  datasource:
+    dynamic:
+      primary: qingyin-authority-db #设置默认的数据源或者数据源组
+      strict: false
+      datasource:
+        qingyin-authority-db:
+          url: jdbc:mysql://localhost:3306/qingyin-authority?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+          driver-class-name: com.mysql.jdbc.Driver # MySql的驱动
+          username: root # 数据库账号
+          password: 123456 # 数据库密码
