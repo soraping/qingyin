@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.qingyin.cloud.entity.User;
 import com.qingyin.cloud.mapper.UserMapper;
 import com.qingyin.cloud.service.IUserService;
-import com.qingyin.cloud.validate.User.UserSearchValidate;
+import com.qingyin.cloud.api.authority.dto.UserSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +20,7 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public User getUserDetail(UserSearchValidate userSearchValidate) {
+    public User getUserDetail(UserSearchDto userSearchValidate) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
 
         if(StringUtils.isNotBlank(userSearchValidate.getUsername())){

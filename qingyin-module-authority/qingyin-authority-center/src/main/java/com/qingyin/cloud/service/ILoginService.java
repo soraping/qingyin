@@ -1,9 +1,9 @@
 package com.qingyin.cloud.service;
 
-import com.qingyin.cloud.validate.User.LoginValidate;
-import com.qingyin.cloud.validate.User.RegisterValidate;
+import com.qingyin.cloud.api.authority.dto.UserLoginReqDto;
+import com.qingyin.cloud.api.authority.dto.UserRegisterReqDto;
 
 public interface ILoginService {
-    String login(LoginValidate loginValidate) throws Exception;
-    String register(RegisterValidate registerValidate) throws Exception;
+    String login(UserLoginReqDto loginValidate) throws Exception;
+    String register(UserRegisterReqDto registerValidate) throws Exception;
 }

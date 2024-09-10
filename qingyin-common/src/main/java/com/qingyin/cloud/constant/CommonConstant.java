@@ -18,4 +18,9 @@ public final class CommonConstant {
      * jwt 中存储的用户信息 key
      */
     public static final String JWT_USER_INFO_KEY = "qingyin_user_token_key";
+
+    /**
+     * rpc 请求前缀
+     */
+    public static final String RPC_API_PREFIX = "/rpc-api";
 }

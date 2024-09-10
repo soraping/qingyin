@@ -25,6 +25,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.qingyin.cloud</groupId>
             <artifactId>qingyin-authority-api</artifactId>
@@ -35,21 +36,11 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qingyin.cloud</groupId>
-            <artifactId>qingyin-mvc-config</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

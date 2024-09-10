@@ -1,11 +1,11 @@
 package com.qingyin.cloud.service;
 
+import com.qingyin.cloud.api.authority.dto.UserLoginReqDto;
+import com.qingyin.cloud.api.authority.dto.UserRegisterReqDto;
 import com.qingyin.cloud.entity.User;
 import com.qingyin.cloud.mapper.UserMapper;
 import com.qingyin.cloud.utils.TimeUtils;
 import com.qingyin.cloud.utils.ToolUtils;
-import com.qingyin.cloud.validate.User.LoginValidate;
-import com.qingyin.cloud.validate.User.RegisterValidate;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,7 +36,7 @@ public class QingyinUserTest {
 
     @Test
     public void registerTest() throws Exception {
-        RegisterValidate registerValidate = new RegisterValidate();
+        UserRegisterReqDto registerValidate = new UserRegisterReqDto();
         registerValidate.setUsername("vicici");
         registerValidate.setPassword("123456");
         String token = loginService.register(registerValidate);
@@ -45,7 +45,7 @@ public class QingyinUserTest {
 
     @Test
     public void loginTest() throws Exception {
-        LoginValidate loginValidate = new LoginValidate();
+        UserLoginReqDto loginValidate = new UserLoginReqDto();
         loginValidate.setUsername("vicici");
         loginValidate.setPassword("123456");
         String token = loginService.login(loginValidate);

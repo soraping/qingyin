@@ -1,6 +1,6 @@
-package com.qingyin.cloud.validate.User;
+package com.qingyin.cloud.api.authority.dto;
 
-import com.qingyin.cloud.validate.BaseValidate;
+import com.qingyin.cloud.dto.BaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSearchValidate extends BaseValidate {
+public class UserSearchDto extends BaseDto {
     private Long id;
     private String username;
 }
