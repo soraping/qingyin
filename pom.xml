@@ -16,6 +16,7 @@
         <module>qingyin-common</module>
         <module>qingyin-mvc-config</module>
         <module>qingyin-module-authority</module>
+        <module>qingyin-module-gateway</module>
     </modules>
 
     <parent>

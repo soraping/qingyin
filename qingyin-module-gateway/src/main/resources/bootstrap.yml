@@ -1,0 +1,24 @@
+server:
+  port: 9009
+  servlet:
+    context-path: /qingyin
+
+spring:
+  application:
+    name: qingyin-gateway
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+        namespace: be504b9e-4400-4815-816a-6a0eea532f85
+
+    # 静态路由
+  #    gateway:
+  #      routes:
+  #        - id: path_route # 路由的ID
+  #          uri: 127.0.0.1:8080/user/{id} # 匹配后路由地址
+  #          predicates: # 断言, 路径相匹配的进行路由
+  #            - Path=/user/{id}
