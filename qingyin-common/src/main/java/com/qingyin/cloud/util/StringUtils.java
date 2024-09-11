@@ -1,4 +1,4 @@
-package com.qingyin.cloud.utils;
+package com.qingyin.cloud.util;
 
 import org.springframework.util.AntPathMatcher;
 

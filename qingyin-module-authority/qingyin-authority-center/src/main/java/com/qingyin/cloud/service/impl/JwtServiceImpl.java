@@ -9,7 +9,7 @@ import com.qingyin.cloud.enums.ErrorEnum;
 import com.qingyin.cloud.exception.LoginException;
 import com.qingyin.cloud.mapper.UserMapper;
 import com.qingyin.cloud.service.IJwtService;
-import com.qingyin.cloud.utils.ToolUtils;
+import com.qingyin.cloud.util.ToolUtils;
 import com.qingyin.cloud.vo.User.LoginUserInfo;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

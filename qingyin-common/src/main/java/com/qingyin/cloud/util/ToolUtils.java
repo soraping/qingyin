@@ -1,7 +1,6 @@
-package com.qingyin.cloud.utils;
+package com.qingyin.cloud.util;
 
-
-import com.qingyin.cloud.config.GlobalConf;
+import com.qingyin.cloud.constant.CommonConstant;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -57,7 +56,7 @@ public class ToolUtils {
     public static String makeToken() {
         long millisecond =  System.currentTimeMillis();
         String randStr =  ToolUtils.randomString(8);
-        String secret  = GlobalConf.secret;
+        String secret  = CommonConstant.GLOBAL_SECRET;
         String token   = ToolUtils.makeMd5(ToolUtils.makeUUID() + millisecond + randStr);
         return ToolUtils.makeMd5(token + secret) + ToolUtils.randomString(6);
     }

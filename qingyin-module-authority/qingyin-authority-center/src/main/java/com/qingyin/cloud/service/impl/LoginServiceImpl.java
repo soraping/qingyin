@@ -10,7 +10,7 @@ import com.qingyin.cloud.mapper.UserMapper;
 import com.qingyin.cloud.service.IJwtService;
 import com.qingyin.cloud.service.ILoginService;
 import com.qingyin.cloud.service.IUserService;
-import com.qingyin.cloud.utils.ToolUtils;
+import com.qingyin.cloud.util.ToolUtils;
 import com.qingyin.cloud.api.authority.dto.UserSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

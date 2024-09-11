@@ -23,4 +23,17 @@ public final class CommonConstant {
      * rpc 请求前缀
      */
     public static final String RPC_API_PREFIX = "/rpc-api";
+
+    /**
+     * 表前缀
+     */
+    public static final String MYSQL_TABLE_PREFIX = "qy_";
+
+    public static final String REDIS_KEY_PREFIX = "qingyin_";
+
+    /**
+     * 全局秘钥
+     * echo "qingyin" | base64
+     */
+    public static final String GLOBAL_SECRET = "cWluZ3lpbgo=";
 }

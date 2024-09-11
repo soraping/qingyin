@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.yulichang.base.MPJBaseMapper;
 import com.github.yulichang.query.MPJQueryWrapper;
 import com.google.gson.reflect.TypeToken;
-import com.qingyin.cloud.utils.TimeUtils;
+import com.qingyin.cloud.util.TimeUtils;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.lang.reflect.Type;

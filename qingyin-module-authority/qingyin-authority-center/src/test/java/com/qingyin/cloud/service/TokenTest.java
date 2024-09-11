@@ -1,7 +1,7 @@
 package com.qingyin.cloud.service;
 
 import com.alibaba.fastjson2.JSON;
-import com.qingyin.cloud.utils.TokenParseUtils;
+import com.qingyin.cloud.util.TokenParseUtils;
 import com.qingyin.cloud.vo.User.LoginUserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

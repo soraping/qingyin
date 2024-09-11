@@ -1,6 +1,6 @@
-package com.qingyin.cloud.utils;
+package com.qingyin.cloud.util;
 
-import com.qingyin.cloud.config.GlobalConf;
+import com.qingyin.cloud.constant.CommonConstant;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtils {
 
     private static RedisTemplate<String, Object> redisTemplate;
-    private static final String redisPrefix = GlobalConf.redisPrefix;
+    private static final String redisPrefix = CommonConstant.REDIS_KEY_PREFIX;
 
     /**
      * 注入Redis

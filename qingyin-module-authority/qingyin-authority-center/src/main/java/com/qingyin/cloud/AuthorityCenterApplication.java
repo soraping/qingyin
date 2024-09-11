@@ -10,7 +10,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * <h1>授权中心启动入口</h1>
  * */
-@EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication(
         exclude = {
