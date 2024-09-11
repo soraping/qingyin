@@ -6,6 +6,11 @@ server:
 spring:
   application:
     name: qingyin-gateway
+  main:
+    # gateway组件中的 spring-boot-starter-webflux 和
+    # springboot作为web项目启动必不可少的 spring-boot-starter-web 出现冲突。
+    # 直接排除
+    web-application-type: reactive
   cloud:
     nacos:
       discovery:
@@ -13,7 +18,7 @@ spring:
         username: nacos
         password: nacos
         server-addr: 127.0.0.1:8848
-        namespace: be504b9e-4400-4815-816a-6a0eea532f85
+        namespace: 2636c16a-f8a7-48c5-974c-7a712fc0db95
 
     # 静态路由
   #    gateway:
