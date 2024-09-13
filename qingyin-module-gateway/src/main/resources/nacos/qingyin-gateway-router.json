@@ -1,0 +1,14 @@
+[
+  {
+    "id": "qingyin-authority-provider",
+    "predicates": [
+      {
+        "args": {
+          "pattern": "/qingyin-rpc-api/authority/**"
+        },
+        "name": "Path"
+      }
+    ],
+    "uri": "lb://qingyin-authority-provider"
+  }
+]

@@ -1,7 +1,7 @@
 server:
   port: 8077
   servlet:
-    context-path: /
+    context-path: /qingyin
 
 spring:
   profiles:

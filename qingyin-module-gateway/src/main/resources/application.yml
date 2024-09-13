@@ -1,7 +1,5 @@
 server:
   port: 9009
-  servlet:
-    context-path: /qingyin
 
 spring:
   application:
@@ -27,3 +25,12 @@ spring:
   #          uri: 127.0.0.1:8080/user/{id} # 匹配后路由地址
   #          predicates: # 断言, 路径相匹配的进行路由
   #            - Path=/user/{id}
+
+
+# 这个地方独立配置, 是网关的数据, 代码 GatewayConfig.java 中读取被监听
+nacos:
+  gateway:
+    route:
+      config:
+        data-id: qingyin-gateway-router
+        group: qingyin

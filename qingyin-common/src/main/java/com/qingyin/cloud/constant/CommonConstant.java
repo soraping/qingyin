@@ -22,7 +22,7 @@ public final class CommonConstant {
     /**
      * rpc 请求前缀
      */
-    public static final String RPC_API_PREFIX = "/rpc-api";
+    public static final String RPC_API_PREFIX = "/qingyin-rpc-api";
 
     /**
      * 表前缀
