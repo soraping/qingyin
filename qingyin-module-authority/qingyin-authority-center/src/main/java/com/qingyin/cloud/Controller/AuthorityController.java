@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * <h1>对外暴露的授权服务接口</h1>
  * */
 @RestController
-@RequestMapping(ApiConstants.PREFIX)
+@RequestMapping(ApiConstants.AUTH_PREFIX)
 public class AuthorityController implements AuthorityProvider {
 
     @Resource

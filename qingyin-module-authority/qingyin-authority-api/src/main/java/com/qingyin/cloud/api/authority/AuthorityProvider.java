@@ -1,5 +1,6 @@
 package com.qingyin.cloud.api.authority;
 
+import com.qingyin.cloud.annotation.NoSecurity;
 import com.qingyin.cloud.api.authority.dto.UserLoginReqDto;
 import com.qingyin.cloud.api.authority.dto.UserRegisterReqDto;
 import com.qingyin.cloud.enums.ApiConstants;
@@ -10,13 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 
-@FeignClient(name = ApiConstants.NAME, path = ApiConstants.PREFIX, contextId = ApiConstants.NAME)
+@FeignClient(name = ApiConstants.AUTH_NAME, path = ApiConstants.AUTH_PREFIX, contextId = ApiConstants.AUTH_NAME)
 public interface AuthorityProvider {
 
     @PostMapping( "/register")
+    @NoSecurity
     CommonResponse<String> register(@Valid @RequestBody UserRegisterReqDto userRegisterReqDto) throws Exception;
 
     @PostMapping("/token")
+    @NoSecurity
     CommonResponse<String> login(@Valid @RequestBody UserLoginReqDto userLoginReqDto) throws Exception;
 
 }

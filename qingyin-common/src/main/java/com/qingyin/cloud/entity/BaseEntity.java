@@ -1,4 +1,4 @@
-package com.qingyin.cloud.core;
+package com.qingyin.cloud.entity;
 
 import lombok.Data;
 

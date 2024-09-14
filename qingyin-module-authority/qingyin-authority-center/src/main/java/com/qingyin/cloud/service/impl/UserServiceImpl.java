@@ -22,7 +22,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserDetail(UserSearchDto userSearchValidate) {
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-
+        lambdaQueryWrapper.eq(User::getIsDelete, 0);
         if(StringUtils.isNotBlank(userSearchValidate.getUsername())){
             lambdaQueryWrapper.eq(User::getUsername, userSearchValidate.getUsername());
             return userMapper.selectOne(lambdaQueryWrapper);
