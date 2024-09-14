@@ -9,17 +9,16 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>qingyin-framework</artifactId>
+    <artifactId>qingyin-module-business</artifactId>
 
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>qingyin-framework</name>
-    <description>常用组件，如redis,mq,excel等</description>
+    <name>qingyin-module-business</name>
+    <description>业务模块</description>
     <modules>
-        <module>qingyin-spring-starter-redis</module>
-        <module>qingyin-spring-starter-mybatis</module>
-        <module>qingyin-spring-starter-nacos</module>
+        <module>qingyin-account-api</module>
+        <module>qingyin-account-service</module>
     </modules>
 
     <properties>

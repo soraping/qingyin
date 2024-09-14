@@ -1,6 +1,6 @@
 package com.qingyin.cloud.api.authority.dto;
 
-import com.qingyin.cloud.dto.BaseDto;
+import com.qingyin.cloud.BaseDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

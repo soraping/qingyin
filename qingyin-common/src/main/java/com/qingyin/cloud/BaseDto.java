@@ -1,4 +1,4 @@
-package com.qingyin.cloud.dto;
+package com.qingyin.cloud;
 
 import java.io.Serializable;
 
