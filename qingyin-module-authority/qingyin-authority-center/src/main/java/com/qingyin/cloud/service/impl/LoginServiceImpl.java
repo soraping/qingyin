@@ -31,7 +31,9 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public String login(UserLoginReqDto userLoginReqDto) throws Exception {
-        User user = userService.getUserDetail(new UserSearchDto(null, userLoginReqDto.getUsername()));
+        UserSearchDto userSearchDto = new UserSearchDto();
+        userSearchDto.setUsername(userLoginReqDto.getUsername());
+        User user = userService.getUserDetail(userSearchDto);
         if(Objects.isNull(user)){
             throw new LoginException(ErrorEnum.LOGIN_ACCOUNT_ERROR.getCode(), ErrorEnum.LOGIN_ACCOUNT_ERROR.getMsg());
         }
@@ -48,7 +50,9 @@ public class LoginServiceImpl implements ILoginService {
 
     @Override
     public String register(UserRegisterReqDto userRegisterReqDto) throws Exception {
-        User user = userService.getUserDetail(new UserSearchDto(null, userRegisterReqDto.getUsername()));
+        UserSearchDto userSearchDto = new UserSearchDto();
+        userSearchDto.setUsername(userRegisterReqDto.getUsername());
+        User user = userService.getUserDetail(userSearchDto);
         if(!Objects.isNull(user)){
             throw new LoginException(ErrorEnum.LOGIN_UNIQUE_ERROR.getCode(), ErrorEnum.LOGIN_UNIQUE_ERROR.getMsg());
         }

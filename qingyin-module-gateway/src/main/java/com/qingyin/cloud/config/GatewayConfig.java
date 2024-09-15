@@ -3,6 +3,8 @@ package com.qingyin.cloud.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class GatewayConfig {
     /** 读取配置的超时时间 */

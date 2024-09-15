@@ -19,9 +19,6 @@
         <module>qingyin-module-gateway</module>
         <module>qingyin-framework</module>
         <module>qingyin-module-business</module>
-        <module>qingyin-module-business/qingyin-account-service</module>
-        <module>qingyin-client</module>
-        <module>qingyin-framework/qingyin-spring-starter-nacos</module>
     </modules>
 
     <parent>

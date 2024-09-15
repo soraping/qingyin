@@ -7,6 +7,7 @@ import com.qingyin.cloud.enums.ApiConstants;
 import com.qingyin.cloud.enums.ErrorEnum;
 import com.qingyin.cloud.service.IUserService;
 import com.qingyin.cloud.vo.CommonResponse;
+import com.qingyin.cloud.vo.PageResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,10 @@ public class UserController implements UserProvider {
         userSearchValidate.setId(id);
         UserVo userVo = UserVo.cover(userService.getUserDetail(userSearchValidate));
         return CommonResponse.success(ErrorEnum.SUCCESS.getMsg(), userVo);
+    }
+
+    @Override
+    public PageResult<UserVo> getUserList(UserSearchDto userSearchDto) {
+        return userService.queryUserPageList(userSearchDto);
     }
 }

@@ -34,3 +34,10 @@ nacos:
       config:
         data-id: qingyin-gateway-router
         group: qingyin
+
+# 忽略校验路径
+validate:
+  skips:
+    paths:
+      - '/qingyin-rpc-api/authority/register'
+      - '/qingyin-rpc-api/authority/token'

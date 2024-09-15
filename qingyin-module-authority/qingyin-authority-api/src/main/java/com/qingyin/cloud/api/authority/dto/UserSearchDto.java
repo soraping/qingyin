@@ -1,14 +1,10 @@
 package com.qingyin.cloud.api.authority.dto;
 
-import com.qingyin.cloud.BaseDto;
-import lombok.AllArgsConstructor;
+import com.qingyin.cloud.dto.PageParamDto;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserSearchDto extends BaseDto {
+public class UserSearchDto extends PageParamDto {
     private Long id;
     private String username;
 }
