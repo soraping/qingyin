@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 
-@FeignClient(name = ApiConstants.AUTH_NAME, path = ApiConstants.AUTH_PREFIX, contextId = ApiConstants.AUTH_NAME)
+@FeignClient(value = ApiConstants.FEIGN_VALUE, path = ApiConstants.AUTH_PREFIX, contextId = ApiConstants.AUTH_NAME)
 public interface AuthorityProvider {
 
     @PostMapping( "/register")

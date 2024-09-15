@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = ApiConstants.USER_NAME, path = ApiConstants.USER_PREFIX, contextId = ApiConstants.USER_NAME)
+@FeignClient(value = ApiConstants.FEIGN_VALUE, path = ApiConstants.USER_PREFIX, contextId = ApiConstants.USER_NAME)
 public interface UserProvider {
     /**
      * 获取用户详情

@@ -21,6 +21,7 @@ public class TimeUtils {
      * @return String
      */
     public static String timestampToDate(Long time) {
+        time = Optional.ofNullable(time).orElse(0L);
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(time * 1000));
     }
 
