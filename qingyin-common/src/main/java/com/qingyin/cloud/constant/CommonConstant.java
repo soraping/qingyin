@@ -36,4 +36,9 @@ public final class CommonConstant {
      * echo "qingyin" | base64
      */
     public static final String GLOBAL_SECRET = "cWluZ3lpbgo=";
+
+    /**
+     * 是否查询真实 IP
+     */
+    public static final Boolean IS_ADDRESS_ENABLE = false;
 }

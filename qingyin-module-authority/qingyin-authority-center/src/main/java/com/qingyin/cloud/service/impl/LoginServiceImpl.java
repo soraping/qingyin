@@ -10,6 +10,7 @@ import com.qingyin.cloud.mapper.UserMapper;
 import com.qingyin.cloud.service.IJwtService;
 import com.qingyin.cloud.service.ILoginService;
 import com.qingyin.cloud.service.IUserService;
+import com.qingyin.cloud.util.TimeUtils;
 import com.qingyin.cloud.util.ToolUtils;
 import com.qingyin.cloud.api.authority.dto.UserSearchDto;
 import lombok.extern.slf4j.Slf4j;
@@ -62,6 +63,8 @@ public class LoginServiceImpl implements ILoginService {
         String password = ToolUtils.makeMd5(userRegisterReqDto.getPassword() + salt);
         saveUser.setSalt(salt);
         saveUser.setPassword(password);
+        saveUser.setCreateTime(TimeUtils.timestamp());
+        saveUser.setUpdateTime(TimeUtils.timestamp());
 
         UserMapper userMapper = SpringUtil.getBean(UserMapper.class);
         userMapper.insert(saveUser);

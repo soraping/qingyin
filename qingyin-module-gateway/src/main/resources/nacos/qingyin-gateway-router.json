@@ -10,5 +10,17 @@
       }
     ],
     "uri": "lb://qingyin-authority-provider"
+  },
+  {
+    "id": "qingyin-user-provider",
+    "predicates": [
+      {
+        "args": {
+          "pattern": "/qingyin-rpc-api/user/**"
+        },
+        "name": "Path"
+      }
+    ],
+    "uri": "lb://qingyin-authority-provider"
   }
 ]
