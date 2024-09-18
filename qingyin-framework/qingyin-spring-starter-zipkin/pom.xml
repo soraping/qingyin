@@ -5,22 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.qingyin.cloud</groupId>
-        <artifactId>qingyin-cloud</artifactId>
+        <artifactId>qingyin-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>qingyin-module-business</artifactId>
+    <artifactId>qingyin-spring-starter-zipkin</artifactId>
 
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>qingyin-module-business</name>
-    <description>业务模块</description>
-    <modules>
-        <module>qingyin-account-api</module>
-        <module>qingyin-account-service</module>
-        <module>qingyin-business-config</module>
-    </modules>
+    <name>qingyin-spring-starter-zipkin</name>
+    <description>zipkin</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -30,10 +25,20 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.qingyin.cloud</groupId>
-            <artifactId>qingyin-spring-starter-swagger</artifactId>
+            <artifactId>qingyin-spring-starter-kafka</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
 
 </project>

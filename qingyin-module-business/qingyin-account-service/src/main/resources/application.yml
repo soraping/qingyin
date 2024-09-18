@@ -1,0 +1,61 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: qingyin-account-provider
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        username: nacos
+        password: nacos
+        server-addr: 127.0.0.1:8848
+        namespace: 2636c16a-f8a7-48c5-974c-7a712fc0db95
+
+  # 数据源配置
+  datasource:
+      type: com.alibaba.druid.pool.DruidDataSource
+
+      # 数据源
+      dynamic:
+        primary: qingyin-account-db
+        strict: false
+        datasource:
+          qingyin-account-db:
+            url: jdbc:mysql://localhost:3306/qingyin-account?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+            driver-class-name: com.mysql.jdbc.Driver # MySql的驱动
+            username: root # 数据库账号
+            password: 123456 # 数据库密码
+
+      druid:
+        initial-size: 5
+        min-idle: 5
+        max-active: 20
+        max-wait: 60000
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        pool-prepared-statements: true
+        validation-query: SELECT 1
+        max-pool-prepared-statement-per-connection-size: 20
+        use-global-data-source-stat: true
+        webStatFilter:
+          enabled: true
+        statViewServlet:
+          enabled: true
+          allow:
+          url-pattern: /druid/*
+          login-username: admin
+          login-password: admin
+        filter:
+          stat:
+            enabled: true
+            log-slow-sql: true
+            slow-sql-millis: 5000
+            merge-sql: true
+          wall:
+            config:
+              multi-statement-allow: true

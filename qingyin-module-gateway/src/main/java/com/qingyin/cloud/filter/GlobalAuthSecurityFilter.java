@@ -46,19 +46,14 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
 
         log.info("===========GlobalAuthSecurityFilter============");
 
+        // 移除 login-user 的请求头，避免伪造模拟
+        SecurityAuthUtils.removeLoginUser(exchange);
+
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
 
         // 请求路径
         String requestUrl = request.getURI().getPath();
-
-        // 获取命中路由信息
-        Route route = (Route) exchange.getAttributes().get(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
-        if(Objects.isNull(route)) {
-            log.error("[{}] 未命中路由", requestUrl);
-            response.setStatusCode(HttpStatus.NOT_FOUND);
-            return response.setComplete();
-        }
 
         // 是否在忽略校验路由集合内
         Boolean isSkip = shouldSkipValidation(requestUrl);
@@ -96,8 +91,13 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
             return response.setComplete();
         }
 
+        // 将 LoginUserInfo 设置在 header 中
+        LoginUserInfo finalLoginUserInfo = loginUserInfo;
+        ServerWebExchange newExchange = exchange.mutate()
+                .request(builder -> SecurityAuthUtils.setLoginUserHeader(builder, finalLoginUserInfo)).build();
+
         // 解析通过, 则放行
-        return chain.filter(exchange);
+        return chain.filter(newExchange);
     }
 
     @Override

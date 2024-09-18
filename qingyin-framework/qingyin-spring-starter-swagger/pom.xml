@@ -5,22 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.qingyin.cloud</groupId>
-        <artifactId>qingyin-cloud</artifactId>
+        <artifactId>qingyin-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>qingyin-module-business</artifactId>
+    <artifactId>qingyin-spring-starter-swagger</artifactId>
 
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>qingyin-module-business</name>
-    <description>业务模块</description>
-    <modules>
-        <module>qingyin-account-api</module>
-        <module>qingyin-account-service</module>
-        <module>qingyin-business-config</module>
-    </modules>
+    <name>qingyin-spring-starter-swagger</name>
+    <description>swagger2</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -29,11 +24,20 @@
     </properties>
 
     <dependencies>
+
         <dependency>
-            <groupId>com.qingyin.cloud</groupId>
-            <artifactId>qingyin-spring-starter-swagger</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

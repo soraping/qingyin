@@ -1,4 +1,4 @@
-package com.qingyin.cloud.Controller;
+package com.qingyin.cloud.controller;
 
 import com.qingyin.cloud.api.authority.UserProvider;
 import com.qingyin.cloud.api.authority.dto.UserSearchDto;
