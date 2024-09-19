@@ -41,7 +41,7 @@
 
         <fastJson2.version>2.0.16</fastJson2.version>
         <gson.version>2.9.0</gson.version>
-        <hutool.version>5.6.0</hutool.version>
+        <hutool.version>5.8.29</hutool.version>
 
         <mysql-connector.version>5.1.49</mysql-connector.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
@@ -52,6 +52,7 @@
         <smallbun.version>1.0.4</smallbun.version>
 
         <knife4j.version>4.5.0</knife4j.version>
+        <springdoc.version>1.7.0</springdoc.version>
 
     </properties>
 
@@ -111,6 +112,22 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <scope>provided</scope> <!-- 设置为 provided，只有工具类需要使用到 -->
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <scope>provided</scope> <!-- 设置为 provided，只有工具类需要使用到 -->
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <scope>provided</scope> <!-- 设置为 provided，只有工具类需要使用到 -->
         </dependency>
 
     </dependencies>
@@ -181,6 +198,16 @@
             </dependency>
 
             <!--openapi3-->
+            <dependency>
+                <groupId>org.springdoc</groupId> <!-- 接口文档 UI：默认 -->
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 UI：knife4j -->
                 <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>

@@ -88,7 +88,6 @@ feign:
     max-idle-connections: 5
     # 生存时间
     keep-alive-duration: 15000
-
   # 开启压缩功能
   compression:
     request:
@@ -132,17 +131,10 @@ knife4j:
         - qingyin-gateway
       # 各个聚合服务的个性化配置，key:注册中心中的服务名称，value：个性化配置
       service-config:
-        oauth2-server:
+        account-provider:
           # 排序
           order: 1
           # 前端显示名称
-          group-name : 认证服务
+          group-name : 会员服务
           # 重新指定basePath，一般在OpenAPI3规范中需要
-          context-path: /
-        resource-server:
-          # 排序
-          order: 2
-          # 前端显示名称
-          group-name : 资源服务
-          # 重新指定basePath，一般在OpenAPI3规范中需要
-          context-path: /
+          context-path: /account

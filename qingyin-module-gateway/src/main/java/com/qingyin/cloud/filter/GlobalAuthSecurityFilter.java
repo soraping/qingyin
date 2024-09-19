@@ -6,6 +6,7 @@ import com.qingyin.cloud.api.authority.vo.UserVo;
 import com.qingyin.cloud.config.GatewayNoSecurityPathConfig;
 import com.qingyin.cloud.constant.CommonConstant;
 import com.qingyin.cloud.util.RedisUtils;
+import com.qingyin.cloud.util.SecurityAuthUtils;
 import com.qingyin.cloud.util.TokenParseUtils;
 import com.qingyin.cloud.vo.User.LoginUserInfo;
 import lombok.extern.slf4j.Slf4j;

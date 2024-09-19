@@ -1,4 +1,4 @@
-package com.qingyin.cloud.filter;
+package com.qingyin.cloud.util;
 
 import com.alibaba.fastjson2.JSON;
 import com.qingyin.cloud.constant.CommonConstant;
