@@ -97,3 +97,52 @@ feign:
       min-request-size: 2048
     response:
       enabled: true
+
+knife4j:
+  gateway:
+    # 是否开启
+    enabled: true
+    # 排序规则(tag/operation排序自4.2.0版本新增)
+    # 取值：alpha-默认排序规则，官方swagger-ui默认实现,order-Knife4j提供的增强排序规则，开发者可扩展x-order，根据数值来自定义排序
+    tags-sorter: order
+    operations-sorter: order
+    # 指定服务发现的模式聚合微服务文档，并且是默认`default`分组
+    # 这是手动模式的，需要指定url，注意 url 和 context-path 这2个值的填写
+    #    strategy: manual
+    #    routes:
+    #      - name: 认证服务
+    #        # 真实通过网关访问子服务接口文档的uri地址：
+    #        # /v3/api-docs?group=default是固定值，
+    #        # /oauth2 是微服务的 context-path
+    #        # /gateway 是我在网关路由断言中自定义添加的，可以是/api等其他的，如果没有，这一层可以不用
+    #        url: /gateway/oauth2/v3/api-docs?group=default
+    #        service-name: oauth2-server
+    #        # 路由前缀
+    #        # 这个值在V3版本中，界面中调试时添加到微服务中uri前面的，一般和上面url前面部分相同
+    #        context-path: /gateway/oauth2
+    #        order: 1
+    # 自动发现模式，读取nacos注册中心里的微服务
+    strategy: discover
+    discover:
+      enabled: true
+      # 指定版本号(Swagger2|OpenAPI3)
+      version : openapi3
+      # 需要排除的微服务(eg:网关服务)
+      excluded-services:
+        - qingyin-gateway
+      # 各个聚合服务的个性化配置，key:注册中心中的服务名称，value：个性化配置
+      service-config:
+        oauth2-server:
+          # 排序
+          order: 1
+          # 前端显示名称
+          group-name : 认证服务
+          # 重新指定basePath，一般在OpenAPI3规范中需要
+          context-path: /
+        resource-server:
+          # 排序
+          order: 2
+          # 前端显示名称
+          group-name : 资源服务
+          # 重新指定basePath，一般在OpenAPI3规范中需要
+          context-path: /

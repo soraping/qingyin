@@ -59,6 +59,16 @@ feign:
 
 ```
 
+或者
+
+```yaml
+# 启用okhttp配置
+spring.cloud.openfeign.okhttp.enabled=true
+
+# 关闭负载重试
+spring.cloud.loadbalancer.retry.enabled=false
+```
+
 #### 添加 `LoadBalancerCacheManager`
 
 ```xml
@@ -108,3 +118,7 @@ spring:
 #### 什么情况下引入依赖
 
 **`okhttp` 是一个请求库，使用 `@EnableFeignClients` 注解的服务需要配置上述的配置。**
+
+#### 参考
+
+https://juejin.cn/post/7149707797418999839
