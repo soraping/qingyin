@@ -22,5 +22,17 @@
       }
     ],
     "uri": "lb://qingyin-authority-provider"
+  },
+  {
+    "id": "qingyin-account-address-provider",
+    "predicates": [
+      {
+        "args": {
+          "pattern": "/qingyin-rpc-api/account/address/**"
+        },
+        "name": "Path"
+      }
+    ],
+    "uri": "lb://qingyin-account-provider"
   }
 ]

@@ -54,6 +54,16 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
 
         // 请求路径
         String requestUrl = request.getURI().getPath();
+        log.info("请求路径 => [{}]", requestUrl);
+
+        // 查看命中路由
+        Route route = (Route) exchange.getAttributes().get(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
+        if(Objects.isNull(route)) {
+            log.error("[{}] 未命中路由", requestUrl);
+            response.setStatusCode(HttpStatus.NOT_FOUND);
+            return response.setComplete();
+        }
+        log.info("命中路由id => [{}]", route.getId());
 
         // 是否在忽略校验路由集合内
         Boolean isSkip = shouldSkipValidation(requestUrl);

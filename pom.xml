@@ -51,8 +51,8 @@
         <dynamic-datasource.version>3.1.0</dynamic-datasource.version>
         <smallbun.version>1.0.4</smallbun.version>
 
-        <swagger2.version>2.9.2</swagger2.version>
-        <swagger-ui.version>1.9.3</swagger-ui.version>
+        <springdoc.version>1.7.0</springdoc.version>
+        <knife4j.version>4.5.0</knife4j.version>
 
     </properties>
 
@@ -181,22 +181,21 @@
                 <version>${smallbun.version}</version>
             </dependency>
 
-            <!-- swagger 用于定义 API 文档 -->
+            <!--openapi3-->
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger2.version}</version>
+                <groupId>org.springdoc</groupId> <!-- 接口文档 UI：默认 -->
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${swagger2.version}</version>
+                <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 UI：knife4j -->
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
-            <!-- 美化 swagger -->
             <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>swagger-bootstrap-ui</artifactId>
-                <version>${swagger-ui.version}</version>
+                <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 UI：knife4j【网关专属】 -->
+                <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
 
         </dependencies>

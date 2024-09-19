@@ -18,17 +18,12 @@ public class QingyinWebMvcConfig extends WebMvcConfigurationSupport {
     }
 
     /**
-     * <h2>让 MVC 加载 Swagger 的静态资源</h2>
+     * <h2>让 MVC 加载静态资源</h2>
      * @param registry
      */
     @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // swagger2
-        registry.addResourceHandler("/**").
-                addResourceLocations("classpath:/static/");
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("doc.html")
+        registry.addResourceHandler("/swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");

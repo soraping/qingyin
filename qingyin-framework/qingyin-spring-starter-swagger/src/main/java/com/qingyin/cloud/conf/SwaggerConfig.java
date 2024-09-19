@@ -1,15 +1,12 @@
 package com.qingyin.cloud.conf;
 
+import io.swagger.v3.oas.models.ExternalDocumentation;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import org.springdoc.core.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * <h1>Swagger 配置类</h1>
@@ -17,37 +14,26 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 美化: /doc.html
  * */
 @Configuration
-@EnableSwagger2
 public class SwaggerConfig {
-    /**
-     * <h2>Swagger 实例 Bean 是 Docket, 所以通过配置 Docket 实例来配置 Swagger</h2>
-     * */
-    @Bean
-    public Docket docket() {
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                // 展示在 Swagger 页面上的自定义工程描述信息
-                .apiInfo(apiInfo())
-                // 选择展示哪些接口
-                .select()
-                // 只有 com.imooc.ecommerce 包内的才去展示
-                .apis(RequestHandlerSelectors.basePackage("com.qingyin.cloud"))
-                .paths(PathSelectors.any())
-                .build();
+    // 此处为模块化配置，将API文档配置成几个模块，添加每个模块名，此次模块下所有API接口的统一前缀
+    @Bean
+    public GroupedOpenApi AccountApi()
+    {
+        return GroupedOpenApi.builder().group("用户API").pathsToMatch("//qingyin-rpc-api/account/**").build();
     }
 
-    /**
-     * <h2>Swagger 的描述信息</h2>
-     * */
-    public ApiInfo apiInfo() {
 
-        return new ApiInfoBuilder()
-                .title("qingyin-business-service")
-                .description("qingyin-business-service")
-                .contact(new Contact(
-                        "Qingyin", "www.fangzheng.com", "soraping@163.com"
-                ))
-                .version("1.0")
-                .build();
+    @Bean
+    public OpenAPI springShopOpenAPI() {
+        return new OpenAPI()
+                .info(new Info().title("openapi接口文档")
+                        .description("qingyin业务接口文档")
+                        .version("v1.0")
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                        .externalDocs(new ExternalDocumentation()
+                        .description("SpringShop Wiki Documentation")
+                        .url("https://springshop.wiki.github.org/docs"));
+
     }
 }

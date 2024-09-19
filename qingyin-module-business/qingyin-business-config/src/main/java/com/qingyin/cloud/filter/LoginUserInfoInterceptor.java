@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.net.URLDecoder;
 
 /**
  * <h1>业务模块请求拦截器</h1>
@@ -51,7 +52,7 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
     private LoginUserInfo getUserInfoFromHeader(HttpServletRequest request) {
         String userInfos = request.getHeader(CommonConstant.LOGIN_USER_HEADER);
         if(userInfos != null) {
-            return JSON.parseObject(userInfos, LoginUserInfo.class);
+            return JSON.parseObject(URLDecoder.decode(userInfos), LoginUserInfo.class);
         }
         return null;
     }
@@ -64,7 +65,7 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
 
         return StringUtils.containsAny(
                 url,
-                "springfox", "swagger", "v2",
+                "springfox", "swagger", "v3",
                 "webjars", "doc.html"
         );
     }

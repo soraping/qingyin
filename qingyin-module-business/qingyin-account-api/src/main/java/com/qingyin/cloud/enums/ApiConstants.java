@@ -6,8 +6,10 @@ public class ApiConstants {
 
     public static final String FEIGN_VALUE = "qingyin-account-provider";
 
-    public static final String ADDRESS_NAME = "qingyin-account-provider";
+    public static final String ADDRESS_NAME = "qingyin-account-address-provider";
 
-    public static final String ADDRESS_PREFIX = CommonConstant.RPC_API_PREFIX + "/address";
+    public static final String ACCOUNT_PREFIX = CommonConstant.RPC_API_PREFIX + "/account";
+
+    public static final String ACCOUNT_ADDRESS_PREFIX = ACCOUNT_PREFIX + "/address";
 
 }
