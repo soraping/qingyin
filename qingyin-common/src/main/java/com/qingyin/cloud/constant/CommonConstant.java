@@ -25,6 +25,11 @@ public final class CommonConstant {
     public static final String LOGIN_USER_HEADER = "login-user";
 
     /**
+     * loginuser redis key
+     */
+    public static final String LOGIN_USER_REDIS_KEY = "login_user_redis_key_";
+
+    /**
      * rpc 请求前缀
      */
     public static final String RPC_API_PREFIX = "/qingyin-rpc-api";

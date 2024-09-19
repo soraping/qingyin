@@ -1,9 +1,11 @@
 package com.qingyin.cloud.filter;
 
+import com.alibaba.fastjson2.JSON;
 import com.qingyin.cloud.api.authority.UserProvider;
 import com.qingyin.cloud.api.authority.vo.UserVo;
 import com.qingyin.cloud.config.GatewayNoSecurityPathConfig;
 import com.qingyin.cloud.constant.CommonConstant;
+import com.qingyin.cloud.util.RedisUtils;
 import com.qingyin.cloud.util.TokenParseUtils;
 import com.qingyin.cloud.vo.User.LoginUserInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -94,7 +96,7 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
         }
 
         // 检测用户状态
-        UserVo userVo = userProvider.getUserDetailById(loginUserInfo.getId()).getData();
+        UserVo userVo = getUserVo(loginUserInfo.getId());
         if(userVo.getIsDisable() == 1){
             log.error("user status is disable");
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
@@ -113,6 +115,21 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() {
         return 0;
+    }
+
+    /**
+     * 获取用户信息
+     * @param userId
+     * @return
+     */
+    private UserVo getUserVo(Long userId) {
+        if(RedisUtils.exists(CommonConstant.LOGIN_USER_REDIS_KEY)) {
+            String userInfos = (String) RedisUtils.get(CommonConstant.LOGIN_USER_REDIS_KEY);
+            return JSON.parseObject(userInfos, UserVo.class);
+        }
+        UserVo userVo = userProvider.getUserDetailById(userId).getData();
+        RedisUtils.set(CommonConstant.LOGIN_USER_REDIS_KEY, JSON.toJSONString(userVo), 5 * 60);
+        return userVo;
     }
 
     /**

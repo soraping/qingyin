@@ -29,6 +29,9 @@ public class LoginUserInfoInterceptor implements HandlerInterceptor {
             return true;
         }
 
+        // 请求限制来源只能 gateway
+
+
         LoginUserInfo loginUserInfo = getUserInfoFromHeader(request);
         if(loginUserInfo != null) {
             log.info("set login user info: [{}]", request.getRequestURI());
