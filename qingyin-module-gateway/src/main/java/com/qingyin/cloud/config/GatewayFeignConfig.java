@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  *
  */
 @Configuration
-public class FeignConfig {
+public class GatewayFeignConfig {
     @Bean
     @ConditionalOnMissingBean
     public HttpMessageConverters messageConverters(ObjectProvider<HttpMessageConverter<?>> converters) {

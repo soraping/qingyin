@@ -9,6 +9,8 @@ spring:
     # springboot作为web项目启动必不可少的 spring-boot-starter-web 出现冲突。
     # 直接排除
     web-application-type: reactive
+    allow-circular-references: true # 允许循环依赖，因为项目是三层架构，无法避免这个情况。
+
   cloud:
     nacos:
       discovery:
@@ -53,3 +55,31 @@ validate:
     paths:
       - '/qingyin-rpc-api/authority/register'
       - '/qingyin-rpc-api/authority/token'
+
+
+feign:
+  # 不使用httpclient，改用okhttp
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+    # 是否禁用重定向
+    follow-redirects: true
+    connect-timeout: 5000
+    # 链接失败是否重试
+    retry-on-connection-failure: true
+    read-timeout: 5000
+    write-timeout: 5000
+    # 最大空闲数量
+    max-idle-connections: 5
+    # 生存时间
+    keep-alive-duration: 15000
+
+  # 开启压缩功能
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
