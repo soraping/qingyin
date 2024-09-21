@@ -44,28 +44,10 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.qingyin.cloud</groupId>
-            <artifactId>qingyin-spring-starter-zipkin</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.qingyin.cloud</groupId>
-            <artifactId>qingyin-spring-starter-kafka</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <!-- 接口文档 UI：knife4j【网关专属】 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-gateway-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>

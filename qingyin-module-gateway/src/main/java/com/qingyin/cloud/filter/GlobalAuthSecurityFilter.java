@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -39,6 +40,8 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
     private UserProvider userProvider;
 
     private final GatewayNoSecurityPathConfig gatewayNoSecurityPathConfig;
+
+    private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     public GlobalAuthSecurityFilter(GatewayNoSecurityPathConfig gatewayNoSecurityPathConfig) {
         this.gatewayNoSecurityPathConfig = gatewayNoSecurityPathConfig;
@@ -139,6 +142,8 @@ public class GlobalAuthSecurityFilter implements GlobalFilter, Ordered {
      * @return
      */
     private Boolean shouldSkipValidation(String path) {
-        return gatewayNoSecurityPathConfig.getPaths().contains(path);
+        return gatewayNoSecurityPathConfig.getPaths()
+                .stream()
+                .anyMatch(pattern -> antPathMatcher.match(pattern, path));
     }
 }

@@ -34,25 +34,6 @@ spring:
         max-idle: 20    # 连接池中的最大空闲连接(默认8)
         min-idle: 0     # 连接池中的最小空闲连接(默认0)
 
-  kafka:
-    bootstrap-servers: 192.168.31.128:9092
-    producer:
-      retries: 3
-    consumer:
-      auto-offset-reset: latest
-  sleuth:
-    sampler:
-      # ProbabilityBasedSampler 抽样策略
-      probability: 1.0  # 采样比例, 1.0 表示 100%, 默认是 0.1
-      # RateLimitingSampler 抽样策略, 设置了限速采集, spring.sleuth.sampler.probability 属性值无效
-      rate: 100  # 每秒间隔接受的 trace 量
-  zipkin:
-    sender:
-      type: kafka # 默认是 web
-    base-url: http://192.168.31.128:9411/
-    service:
-      name: ${spring.application.name}
-
 
     # 静态路由
   #    gateway:
@@ -77,6 +58,7 @@ validate:
     paths:
       - '/qingyin-rpc-api/authority/register'
       - '/qingyin-rpc-api/authority/token'
+      - '/qingyin-rpc-api/**/v3/api-docs'
 
 
 feign:
@@ -137,12 +119,13 @@ knife4j:
       # 需要排除的微服务(eg:网关服务)
       excluded-services:
         - qingyin-gateway
+        - qingyin-authority-provider
       # 各个聚合服务的个性化配置，key:注册中心中的服务名称，value：个性化配置
       service-config:
-        account-provider:
+        qingyin-account-provider:
           # 排序
           order: 1
           # 前端显示名称
           group-name : 会员服务
           # 重新指定basePath，一般在OpenAPI3规范中需要
-          context-path: /account
+          context-path: /qingyin-rpc-api/account/

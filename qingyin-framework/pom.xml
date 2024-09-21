@@ -22,7 +22,6 @@
         <module>qingyin-spring-starter-nacos</module>
         <module>qingyin-spring-starter-kafka</module>
         <module>qingyin-spring-starter-swagger</module>
-        <module>qingyin-spring-starter-zipkin</module>
         <module>qingyin-spring-starter-rpc</module>
     </modules>
 

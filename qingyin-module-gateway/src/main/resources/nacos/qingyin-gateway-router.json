@@ -24,15 +24,24 @@
     "uri": "lb://qingyin-authority-provider"
   },
   {
-    "id": "qingyin-account-address-provider",
+    "id": "qingyin-account-provider",
     "predicates": [
       {
         "args": {
-          "pattern": "/qingyin-rpc-api/account/address/**"
+          "pattern": "/qingyin-rpc-api/account/**"
         },
         "name": "Path"
       }
     ],
-    "uri": "lb://qingyin-account-provider"
+    "uri": "lb://qingyin-account-provider",
+    "filters": [
+      {
+        "name":"RewritePath",
+        "args":{
+          "_genkey_0":"/qingyin-rpc-api/account/v3/api-docs",
+          "_genkey_1":"/v3/api-docs"
+        }
+      }
+    ]
   }
 ]

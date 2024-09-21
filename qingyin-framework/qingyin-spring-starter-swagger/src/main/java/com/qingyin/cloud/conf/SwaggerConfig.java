@@ -15,15 +15,6 @@ import org.springframework.context.annotation.Configuration;
  * */
 @Configuration
 public class SwaggerConfig {
-
-    // 此处为模块化配置，将API文档配置成几个模块，添加每个模块名，此次模块下所有API接口的统一前缀
-    @Bean
-    public GroupedOpenApi AccountApi()
-    {
-        return GroupedOpenApi.builder().group("用户API").pathsToMatch("//qingyin-rpc-api/account/**").build();
-    }
-
-
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
