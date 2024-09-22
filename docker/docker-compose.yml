@@ -52,7 +52,6 @@ services:
       - SPRING_SECURITY_USER_NAME=admin
       - SPRING_SECURITY_USER_PASSWORD=admin123
 
-
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:management
@@ -68,24 +67,40 @@ services:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=admin123
 
-  zipkin:
-    container_name: zipkin
-    image: openzipkin/zipkin
+  skywalking-oap:
+    image: apache/skywalking-oap-server:9.7.0
+    container_name: skywalking-oap
+    privileged: true
     networks:
+      - skywalking
       - es_net
     depends_on:
       - elasticsearch
     links:
       - elasticsearch:es
-    environment:
-      - TZ=Asia/Shanghai
-      - STORAGE_TYPE=elasticsearch
-      - ES_HOSTS=http://es:9200
-      - ES_USERNAME=elastic
-      - ES_PASSWORD=123456
-      - JAVA_OPTS=-Dlogging.level.zipkin2=DEBUG
     ports:
-      - 9411:9411
+      - 11800:11800
+      - 12800:12800
+    environment:
+      SW_STORAGE: elasticsearch
+      SW_STORAGE_ES_CLUSTER_NODES: es:9200
+      SW_ES_USER: elastic
+      SW_ES_PASSWORD: elastic123
+      TZ: Asia/Shanghai
+
+  skywalking-ui:
+    image: apache/skywalking-ui:9.7.0
+    container_name: skywalking-ui
+    privileged: true
+    networks:
+      - skywalking
+    depends_on:
+      - skywalking-oap
+    ports:
+      - 8049:8080
+    environment:
+      SW_OAP_ADDRESS: http://skywalking-oap:12800
+      TZ: Asia/Shanghai
   
   elasticsearch:
     image: elasticsearch:7.17.7
@@ -127,9 +142,10 @@ services:
       - ELASTICSEARCH_URL=http://es:9200
       - TZ=Asia/Shanghai
 
-
 networks:
   kafka_net:
     driver: bridge
   es_net:
+    driver: bridge
+  skywalking:
     driver: bridge
