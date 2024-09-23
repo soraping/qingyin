@@ -1,0 +1,10 @@
+network.host: 0.0.0.0
+# 跨域
+http.host: 0.0.0.0
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+# 账号密码
+xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+# 关闭geoip数据库的更新
+ingest.geoip.downloader.enabled: false

@@ -6,6 +6,8 @@ spring:
     allow-circular-references: true # 允许循环依赖，因为项目是三层架构，无法避免这个情况。
   application:
     name: qingyin-account-provider
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
@@ -81,3 +83,11 @@ knife4j:
   enable: true # 2.2 是否开启 Swagger 文档的 Knife4j UI 界面
   setting:
     language: zh_cn
+
+
+# 日志文件配置
+logging:
+  level:
+    org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 芋艿：先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
+  file:
+    name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径

@@ -3,9 +3,9 @@ package com.qingyin.cloud.core;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.yulichang.base.MPJBaseMapper;
 import com.github.yulichang.query.MPJQueryWrapper;
-import com.google.gson.reflect.TypeToken;
 import com.qingyin.cloud.util.TimeUtils;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -49,7 +49,7 @@ public interface IBaseMapper<T> extends MPJBaseMapper<T> {
      * @param conditions 条件[ new String[]{"like:username:str", "=:role:int"} ]
      */
     default void setSearch(MPJQueryWrapper<T> queryWrapper, Object param, String[] conditions) {
-        Type types = new TypeToken<Map<String, String>>() {}.getType();
+        Type types = new TypeReference<Map<String, String>>() {}.getType();
         Map<String, String> params = JSON.parseObject(JSONObject.toJSONString(param), types);
 
         for (String condition : conditions) {
@@ -186,7 +186,7 @@ public interface IBaseMapper<T> extends MPJBaseMapper<T> {
      * @param conditions 条件[ new String[]{"like:username:str", "=:role:int"} ]
      */
     default void setSearch(QueryWrapper<T> queryWrapper, Object param, String[] conditions) {
-        Type types = new TypeToken<Map<String, String>>() {}.getType();
+        Type types = new TypeReference<Map<String, String>>() {}.getType();
         Map<String, String> params = JSON.parseObject(JSONObject.toJSONString(param), types);
 
         for (String condition : conditions) {

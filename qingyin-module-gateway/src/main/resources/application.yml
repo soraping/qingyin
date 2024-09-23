@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: qingyin-gateway
+  profiles:
+    active: dev
   main:
     # gateway组件中的 spring-boot-starter-webflux 和
     # springboot作为web项目启动必不可少的 spring-boot-starter-web 出现冲突。
@@ -129,3 +131,11 @@ knife4j:
           group-name : 会员服务
           # 重新指定basePath，一般在OpenAPI3规范中需要
           context-path: /qingyin-rpc-api/account/
+
+
+# 日志文件配置
+logging:
+  level:
+    org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 芋艿：先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
+  file:
+    name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
