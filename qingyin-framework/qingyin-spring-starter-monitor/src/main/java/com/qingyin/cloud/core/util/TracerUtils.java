@@ -1,4 +1,4 @@
-package com.qingyin.cloud.util;
+package com.qingyin.cloud.core.util;
 
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 
