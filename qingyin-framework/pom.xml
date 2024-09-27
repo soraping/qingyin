@@ -24,6 +24,7 @@
         <module>qingyin-spring-starter-swagger</module>
         <module>qingyin-spring-starter-rpc</module>
         <module>qingyin-spring-starter-monitor</module>
+        <module>qingyin-spring-starter-mq</module>
     </modules>
 
     <properties>
