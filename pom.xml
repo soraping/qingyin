@@ -37,6 +37,7 @@
         <spring-boot.version>2.7.18</spring-boot.version>
         <spring-cloud.version>2021.0.9</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.6.1</spring-cloud-alibaba.version>
+        <netflix-hystrix.version>2.2.10.RELEASE</netflix-hystrix.version>
 
         <jjwt.version>0.11.2</jjwt.version>
 
@@ -157,6 +158,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!--自 SpringCloud 2020 起，已经去除了 Hystrix，需要额外引入-->
+            <!--hystrix-->
+<!--            todo 写法上有待思量 -->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>-->
+<!--                <version>${netflix-hystrix.version}</version>-->
+<!--            </dependency>-->
 
             <!-- Mysql-Connector -->
             <dependency>

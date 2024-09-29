@@ -20,7 +20,6 @@
         <module>qingyin-spring-starter-redis</module>
         <module>qingyin-spring-starter-mybatis</module>
         <module>qingyin-spring-starter-nacos</module>
-        <module>qingyin-spring-starter-kafka</module>
         <module>qingyin-spring-starter-swagger</module>
         <module>qingyin-spring-starter-rpc</module>
         <module>qingyin-spring-starter-monitor</module>
