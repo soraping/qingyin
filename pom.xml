@@ -66,6 +66,11 @@
     </properties>
 
     <dependencies>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>5.3.31</version>
+		</dependency>
         <!-- lombok 工具通过在代码编译时期动态的将注解替换为具体的代码,
         IDEA 需要添加 lombok 插件 -->
         <dependency>
