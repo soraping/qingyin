@@ -12,7 +12,7 @@
     <artifactId>qingyin-module-stream</artifactId>
 
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>qingyin-module-stream</name>
     <description>springcloud-stream 对接 mq</description>

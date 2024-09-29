@@ -145,10 +145,12 @@ services:
     volumes:
       - /home/docker/rabbitmq/data/:/var/lib/rabbitmq/
       - /home/docker/rabbitmq/log/:/var/log/rabbitmq/log/
+      - /home/docker/rabbitmq/config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - /home/docker/rabbitmq/config/10-default-guest-user.conf:/etc/rabbitmq/conf.d/10-default-guest-user.conf
+      - /home/docker/rabbitmq/plugins/rabbitmq_delayed_message_exchange-3.9.0.ez:/opt/rabbitmq/plugins/rabbitmq_delayed_message_exchange-3.9.0.ez
     environment:
       - TZ=Asia/Shanghai
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=admin123
+      - LANG=en_US.UTF-8
 
   skywalking-oap:
     image: registry.cn-hangzhou.aliyuncs.com/zhengqing/skywalking-oap-server:9.5.0

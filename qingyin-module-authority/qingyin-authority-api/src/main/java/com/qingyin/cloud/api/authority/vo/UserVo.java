@@ -3,10 +3,16 @@ package com.qingyin.cloud.api.authority.vo;
 import com.qingyin.cloud.entity.BaseEntity;
 import com.qingyin.cloud.util.TimeUtils;
 import com.qingyin.cloud.vo.BaseVo;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import org.springframework.beans.BeanUtils;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserVo extends BaseVo {
     private Long id;
     private String username;

@@ -15,6 +15,20 @@ spring:
         password: nacos
         server-addr: 192.168.31.211:8848
         namespace: qingyin
+    # stream mq
+    stream:
+      bindings:
+         testSupplier-out-0: # 生产者配置
+           content-type: application/json
+           destination: demo-destination #交换机(topic)
+           binder: rabbit
+         testConsumer-in-0: # 消费者配置
+           content-type: application/json
+           destination: demo-destination #交换机
+           group: demo-group #消费者分组
+           binder: rabbit
+      function:
+         definition: testSupplier;
 
   # 数据源配置
   datasource:
@@ -114,6 +128,13 @@ spring:
         min-idle: 0     # 连接池中的最小空闲连接(默认0)
 
 
+  rabbitmq:
+    host: 192.168.31.217
+    port: 5672
+    username: guest
+    password: guest
+
+
 # Mybatis-plus配置
 mybatis-plus:
   configuration:
@@ -128,4 +149,3 @@ logging:
   file:
     name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
 
-# stream mq
