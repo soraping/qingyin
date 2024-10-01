@@ -12,9 +12,14 @@ import com.qingyin.cloud.service.ILoginService;
 import com.qingyin.cloud.service.IUserService;
 import com.qingyin.cloud.util.TimeUtils;
 import com.qingyin.cloud.util.ToolUtils;
+import com.qingyin.cloud.util.YmlUtils;
+import com.qingyin.cloud.vo.QingyinMessage;
 import com.qingyin.cloud.api.authority.dto.UserSearchDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.integration.support.MessageBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,6 +34,9 @@ public class LoginServiceImpl implements ILoginService {
 
     @Resource
     private IJwtService jwtService;
+    
+    @Autowired
+    private StreamBridge streamBridgeTemplate;
 
     @Override
     public String login(UserLoginReqDto userLoginReqDto) throws Exception {
@@ -68,7 +76,11 @@ public class LoginServiceImpl implements ILoginService {
 
         UserMapper userMapper = SpringUtil.getBean(UserMapper.class);
         userMapper.insert(saveUser);
-
+        
+        // 发送 mq 消息
+        streamBridgeTemplate.send("registerSupplier-out-0", QingyinMessage.buildData(saveUser.getUsername()));
+        log.info("register send msg success!");
+        
         String token = jwtService.generateToken(userRegisterReqDto.getUsername(), userRegisterReqDto.getPassword());
 
         return token;

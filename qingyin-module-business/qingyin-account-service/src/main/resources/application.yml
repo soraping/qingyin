@@ -16,6 +16,21 @@ spring:
         password: nacos
         server-addr: 127.0.0.1:8848
         namespace: 2636c16a-f8a7-48c5-974c-7a712fc0db95
+        
+    # stream mq
+    stream:
+      rabbit:
+        binder:
+          admin-addresses: localhost:15672
+      bindings:
+         registerConsumer-in-0: # 生产者配置
+           content-type: application/json
+           destination: registerTopic #交换机(topic)
+           binder: rabbit
+           group: account-register-msg-group
+           
+    function:
+       destination: registerConsumer
 
   # 数据源配置
   datasource:

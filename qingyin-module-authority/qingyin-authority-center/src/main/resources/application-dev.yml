@@ -11,6 +11,11 @@ spring:
         password: nacos
         server-addr: 127.0.0.1:8848
         namespace: 2636c16a-f8a7-48c5-974c-7a712fc0db95
+    
+    stream:
+      rabbit:
+        binder:
+          admin-addresses: localhost:15672
 
   datasource:
     dynamic:
