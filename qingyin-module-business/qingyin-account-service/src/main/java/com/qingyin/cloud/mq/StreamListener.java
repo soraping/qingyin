@@ -1,4 +1,4 @@
-package com.qingyin.cloud.msg;
+package com.qingyin.cloud.mq;
 
 import java.util.function.Consumer;
 

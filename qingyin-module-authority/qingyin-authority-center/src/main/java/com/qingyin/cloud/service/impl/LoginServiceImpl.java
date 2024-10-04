@@ -78,8 +78,13 @@ public class LoginServiceImpl implements ILoginService {
         userMapper.insert(saveUser);
         
         // 发送 mq 消息
-        streamBridgeTemplate.send("registerSupplier-out-0", QingyinMessage.buildData(saveUser.getUsername()));
-        log.info("register send msg success!");
+        boolean ack = streamBridgeTemplate.send("registerSupplier-out-0", QingyinMessage.buildData(saveUser.getUsername()));
+        if(ack) {
+        	log.info("register send msg success!");
+        }else {
+			log.error("register send msg failed!");
+		}
+        
         
         String token = jwtService.generateToken(userRegisterReqDto.getUsername(), userRegisterReqDto.getPassword());
 

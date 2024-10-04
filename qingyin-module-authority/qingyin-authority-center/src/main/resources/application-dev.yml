@@ -13,9 +13,17 @@ spring:
         namespace: 2636c16a-f8a7-48c5-974c-7a712fc0db95
     
     stream:
-      rabbit:
-        binder:
-          admin-addresses: localhost:15672
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.31.5
+                port: 5672
+                username: admin
+                password: 123456
+                virtual-host: my_vhost
 
   datasource:
     dynamic:

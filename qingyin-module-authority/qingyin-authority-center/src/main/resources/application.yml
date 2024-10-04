@@ -17,14 +17,23 @@ spring:
         namespace: qingyin
     # stream mq
     stream:
-      rabbit:
-        binder:
-          admin-addresses: localhost:15672
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.31.5
+                port: 5672
+                username: admin
+                password: 123456
+                virtual-host: my_vhost
       bindings:
          registerSupplier-out-0: # 生产者配置
            content-type: application/json
            destination: registerTopic #交换机(topic)
-           binder: rabbit
+           binder: defaultRabbit
+      output-bindings: registerSupplier
 
 
   # 数据源配置
