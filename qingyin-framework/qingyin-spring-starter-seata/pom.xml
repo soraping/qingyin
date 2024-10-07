@@ -5,27 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.qingyin.cloud</groupId>
-        <artifactId>qingyin-cloud</artifactId>
+        <artifactId>qingyin-framework</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>qingyin-framework</artifactId>
+    <artifactId>qingyin-spring-starter-seata</artifactId>
 
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>qingyin-framework</name>
-    <description>常用组件，如redis,mq,excel等</description>
-    <modules>
-        <module>qingyin-spring-starter-redis</module>
-        <module>qingyin-spring-starter-mybatis</module>
-        <module>qingyin-spring-starter-nacos</module>
-        <module>qingyin-spring-starter-swagger</module>
-        <module>qingyin-spring-starter-rpc</module>
-        <module>qingyin-spring-starter-monitor</module>
-        <module>qingyin-spring-starter-mq</module>
-        <module>qingyin-spring-starter-seata</module>
-    </modules>
+    <name>qingyin-spring-starter-seata</name>
+    <description>seata</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

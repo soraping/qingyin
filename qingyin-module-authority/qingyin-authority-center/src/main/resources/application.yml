@@ -136,7 +136,7 @@ mybatis-plus:
 # 日志文件配置
 logging:
   level:
-    org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR # TODO 芋艿：先禁用，Spring Boot 3.X 存在部分错误的 WARN 提示
+    org.springframework.context.support.PostProcessorRegistrationDelegate: ERROR
   file:
     name: ${user.home}/logs/${spring.application.name}.log # 日志文件名，全路径
 
