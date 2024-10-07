@@ -20,6 +20,8 @@
         <module>qingyin-account-api</module>
         <module>qingyin-account-service</module>
         <module>qingyin-business-config</module>
+        <module>qingyin-goods-api</module>
+        <module>qingyin-goods-service</module>
     </modules>
 
     <properties>
