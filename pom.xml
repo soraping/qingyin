@@ -65,6 +65,7 @@
         <logback.version>1.2.13</logback.version>
         
         <seata.version>1.6.1</seata.version>
+        <xxl-job.version>2.4.0</xxl-job.version>
 
     </properties>
 
@@ -288,6 +289,13 @@
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
+            </dependency>
+
+            <!-- job 定时任务-->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
 
         </dependencies>

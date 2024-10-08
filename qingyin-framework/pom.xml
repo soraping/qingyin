@@ -25,6 +25,7 @@
         <module>qingyin-spring-starter-monitor</module>
         <module>qingyin-spring-starter-mq</module>
         <module>qingyin-spring-starter-seata</module>
+        <module>qingyin-spring-starter-job</module>
     </modules>
 
     <properties>
