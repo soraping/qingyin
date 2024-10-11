@@ -115,7 +115,7 @@ services:
       # 设置broker最大内存，和初始内存
       - KAFKA_HEAP_OPTS=-Xmx512M -Xms256M
     volumes:
-      - /www/wwwroot/data/kafka/broker:/bitnami/kafka:rw
+      - /home/docker/kafka/broker:/bitnami/kafka:rw
     
   # https://blog.csdn.net/Vector97/article/details/128539970
   kafkaui:
@@ -190,7 +190,7 @@ services:
       TZ: Asia/Shanghai
   
   elasticsearch:
-    image: registry.cn-hangzhou.aliyuncs.com/zhengqing/elasticsearch:7.14.1
+    image: registry.cn-hangzhou.aliyuncs.com/zhengqing/elasticsearch:7.17.7
     container_name: elasticsearch
     networks:
       - es_net
@@ -200,17 +200,17 @@ services:
       - 9300:9300
     privileged: true
     volumes:
-      - /www/wwwroot/data/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - /www/wwwroot/data/es/logs:/usr/share/elasticsearch/logs
-      - /www/wwwroot/data/es/data:/usr/share/elasticsearch/data
-      - /www/wwwroot/data/es/plugins:/usr/share/elasticsearch/plugins
+      - /home/docker/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /home/docker/es/logs:/usr/share/elasticsearch/logs
+      - /home/docker/es/data:/usr/share/elasticsearch/data
+      - /home/docker/es/plugins:/usr/share/elasticsearch/plugins
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - discovery.type=single-node
       - LANG=en_US.UTF-8
 
   kibana:
-    image: registry.cn-hangzhou.aliyuncs.com/zhengqing/kibana:7.14.1
+    image: registry.cn-hangzhou.aliyuncs.com/zhengqing/kibana:7.17.7
     container_name: kibana
     privileged: true
     networks:
@@ -223,11 +223,33 @@ services:
     links:
       - elasticsearch:es
     volumes:
-      - /www/wwwroot/data/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - /home/docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
     environment:
       - ELASTICSEARCH_HOSTS=http://es:9200
       - ELASTICSEARCH_URL=http://es:9200
       - TZ=Asia/Shanghai
+
+  logstash:
+    image: logstash:7.17.7
+    container_name: logstash
+    # restart: always
+    networks:
+      - es_net
+      - kafka_kafka_net
+    ports:
+      - 5044:5044
+      - 9600:9600
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch:es
+    volumes:
+      - /home/docker/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - /home/docker/logstash/pipeline:/usr/share/logstash/pipeline
 
   xxljob:
     image: xuxueli/xxl-job-admin:2.4.1
@@ -236,7 +258,7 @@ services:
     ports:
       - 9003:8080
     volumes:
-      - /www/wwwroot/data/xxl-job/logs:/data/applogs
+      - /home/docker/xxl-job/logs:/data/applogs
     environment:
       PARAMS: "--spring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxl_job?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&useSSL=false
                    --spring.datasource.username=root
