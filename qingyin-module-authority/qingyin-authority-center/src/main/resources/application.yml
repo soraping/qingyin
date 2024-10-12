@@ -23,11 +23,11 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: 192.168.31.5
-                port: 5672
-                username: admin
-                password: 123456
-                virtual-host: my_vhost
+                host: ${spring.rabbitmq.host}
+                port: ${spring.rabbitmq.port}
+                username: ${spring.rabbitmq.username}
+                password: ${spring.rabbitmq.password}
+                virtual-host: ${spring.rabbitmq.virtual-host}
       bindings:
          registerSupplier-out-0: # 生产者配置
            content-type: application/json
@@ -120,10 +120,11 @@ spring:
 
 
   rabbitmq:
-    host: 192.168.31.217
+    host: 192.168.31.54
     port: 5672
     username: guest
     password: guest
+    virtual-host: my_vhost
 
 
 # Mybatis-plus配置
